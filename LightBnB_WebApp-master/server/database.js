@@ -85,7 +85,7 @@ exports.addUser = addUser;
 
 const getAllReservations = function(guest_id, limit = 10) {
   const sqlQuery = `
-    SELECT reservations.*, properties.*
+    SELECT reservations.*, properties.*, avg(rating) as average_rating
     FROM reservations 
     JOIN properties ON properties.id = reservations.property_id
     JOIN property_reviews ON properties.id = property_reviews.property_id
